@@ -17,9 +17,15 @@ public class VendingMachineTest {
 	@Test
 	public void testAcceptCoinsForCoinValue(){
 		assertEquals(.05, machine.acceptCoins("nickel"), 0);
+		assertEquals(.10, machine.acceptCoins("dime"), 0);
+		assertEquals(.25, machine.acceptCoins("quarter"), 0);
 	}
 	
 	//increments customers total coin value
+	@Test
+	public void incrementCoinTotalReturnsUpdatedCoinTotal(){
+		assertEquals(.05, machine.incrementCoinTotal(machine.acceptCoins("nickel")), 0);
+	}
 	
 	//display is updated when coin is inserted
 
