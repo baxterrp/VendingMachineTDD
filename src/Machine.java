@@ -4,6 +4,12 @@ public class Machine {
 	private double coinTotal = 0;
 	private String display = "Insert Coin";
 	
+	///////////for testing only
+	public double setCoinTotal(double amount){
+		coinTotal = amount;
+		return coinTotal;
+	}
+	
 	//accepts only valid coins
 	public double acceptCoins(String coinName){
 		switch(coinName){
@@ -38,6 +44,7 @@ public class Machine {
 			product.sellProduct();
 			display = "Thank You";
 			coinTotal = 0;
+			makeChange(product.getPrice());
 			return coinTotal;
 		}
 		else{
@@ -49,6 +56,10 @@ public class Machine {
 			}
 			return coinTotal;
 		}
+	}
+	
+	public double makeChange(double cost){
+		return coinTotal - cost;
 	}
 	
 	

@@ -49,11 +49,7 @@ public class VendingMachineTest {
 	@Test
 	public void checkCostAgainstCustomerMoneyWithSufficientFunds(){
 		//fill machine
-		assertEquals(.25, machine.incrementCoinTotal(machine.acceptCoins("quarter")), 0);
-		assertEquals(.50, machine.incrementCoinTotal(machine.acceptCoins("quarter")), 0);
-		assertEquals(.75, machine.incrementCoinTotal(machine.acceptCoins("quarter")), 0);
-		assertEquals(1.00, machine.incrementCoinTotal(machine.acceptCoins("quarter")), 0);
-		assertEquals(1.25, machine.incrementCoinTotal(machine.acceptCoins("quarter")), 0);
+		assertEquals(5.00, machine.setCoinTotal(5.00), 0);
 		//transaction
 		assertEquals(0, machine.selectProduct(cola), 0);
 		//sold 1 item
@@ -77,5 +73,13 @@ public class VendingMachineTest {
 	public void checkCostAgainstCustomerMoneyWithZero(){
 		assertEquals(0, machine.selectProduct(cola), 0);
 		assertEquals("Insert Coin", machine.getDisplay());
+	}
+	
+	@Test
+	public void makeChangeReturnsCorrectChange(){
+		//fill machine
+		assertEquals(5.00, machine.setCoinTotal(5.00), 0);
+		//make change
+		assertEquals(4.00, machine.makeChange(1.00), 0);
 	}
 }
