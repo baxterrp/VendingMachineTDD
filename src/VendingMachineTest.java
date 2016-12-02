@@ -6,10 +6,16 @@ import org.junit.Test;
 public class VendingMachineTest {
 	
 	Machine machine;
+	Product cola;
+	Product chips;
+	Product candy;
 
 	@Before
 	public void setUp(){
 		machine = new Machine();
+		cola = new Product(1.00, "cola", 5);
+		chips = new Product(.50, "chips", 0);
+		candy = new Product(.65, "candy", 1);
 	}
 	////Accept Coins Tests
 	
@@ -31,6 +37,13 @@ public class VendingMachineTest {
 		assertEquals("$0.40", machine.getDisplay());
 	}
 	
+	//create new product
+	@Test
+	public void getAllFieldsOfNewProduct(){
+		assertEquals(1.00, cola.getPrice(), 0);
+		assertEquals("cola", cola.getName());
+		assertEquals(5, cola.getQuantity());
+	}
 
 	////Select Product Tests
 }

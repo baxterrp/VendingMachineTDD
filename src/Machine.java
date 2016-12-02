@@ -32,4 +32,6 @@ public class Machine {
 	public String getDisplay(){
 		return display;
 	}
+	
+	
 }
