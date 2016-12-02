@@ -18,8 +18,18 @@ public class Machine {
 	//increments cointTotal
 	public double incrementCoinTotal(double coinValue){
 		coinTotal += coinValue;
+		//limit to two digits
+		coinTotal = Math.round(coinTotal * 100);
+		coinTotal = coinTotal/100;
+		//change display
+		display = String.format("%.2f", coinTotal);
+		display = "$" + display;
 		
 		return coinTotal;
 	}
 	
+	//return display
+	public String getDisplay(){
+		return display;
+	}
 }
