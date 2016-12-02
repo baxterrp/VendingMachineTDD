@@ -82,4 +82,28 @@ public class VendingMachineTest {
 		//make change
 		assertEquals(4.00, machine.makeChange(1.00), 0);
 	}
+	
+	@Test
+	public void returnChangeReturnsProperChange(){
+		assertEquals(5.00, machine.setCoinTotal(5.00), 0);
+		assertEquals(5.00, machine.returnChange(), 0);
+		assertEquals("Insert Coin", machine.getDisplay());
+	}
+	@Test
+	public void testSoldOut(){
+		assertEquals(5.00, machine.setCoinTotal(5.00), 0);
+		assertEquals(5.00, machine.selectProduct(chips), 0);
+		assertEquals("Sold Out", machine.getDisplay());
+	}
+	@Test
+	public void checkMachineFundsWithInsufficientFunds(){
+		assertEquals("Exact Change Only", machine.checkMachineFunds());
+	}
+	@Test
+	public void checkMachineFundsReturnsWithSufficientFunds(){
+		assertEquals(.05, machine.incrementCoinTotal(machine.acceptCoins("nickel")), 0);
+		assertEquals(.15, machine.incrementCoinTotal(machine.acceptCoins("dime")), 0);
+		assertEquals(.25, machine.incrementCoinTotal(machine.acceptCoins("dime")), 0);
+		assertEquals("Insert Coin", machine.checkMachineFunds());
+	}
 }

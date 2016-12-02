@@ -9,6 +9,7 @@ public class Product {
 		price = productPrice;
 		name = productName;
 		quantity = productQuantity;
+		
 	}
 	
 	public double getPrice(){
