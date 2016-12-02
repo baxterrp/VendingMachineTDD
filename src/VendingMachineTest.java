@@ -61,4 +61,21 @@ public class VendingMachineTest {
 		//changed display
 		assertEquals("Thank You", machine.getDisplay());
 	}
+	
+	@Test
+	public void checkCostAgainstCustomerMoneyWithInsufficientFunds(){
+		assertEquals(.25, machine.incrementCoinTotal(machine.acceptCoins("quarter")), 0);
+		//transaction
+		assertEquals(.25, machine.selectProduct(cola), 0);
+		//no item sold
+		assertEquals(5, cola.getQuantity());
+		//changed display
+		assertEquals("PRICE $1.00", machine.getDisplay());
+	}
+	
+	@Test
+	public void checkCostAgainstCustomerMoneyWithZero(){
+		assertEquals(0, machine.selectProduct(cola), 0);
+		assertEquals("Insert Coin", machine.getDisplay());
+	}
 }

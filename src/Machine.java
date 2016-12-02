@@ -41,6 +41,12 @@ public class Machine {
 			return coinTotal;
 		}
 		else{
+			if(coinTotal > 0){
+				display = String.format("%.2f",  product.getPrice());
+				display = "PRICE $" + display;
+			}else{
+				display = "Insert Coin";
+			}
 			return coinTotal;
 		}
 	}
