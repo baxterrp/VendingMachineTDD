@@ -36,6 +36,7 @@ public class VendingMachineTest {
 		//display is updated when coin is inserted
 		assertEquals("$0.40", machine.getDisplay());
 	}
+	////Select Product Tests
 	
 	//create new product
 	@Test
@@ -45,5 +46,19 @@ public class VendingMachineTest {
 		assertEquals(5, cola.getQuantity());
 	}
 
-	////Select Product Tests
+	@Test
+	public void checkCostAgainstCustomerMoneyWithSufficientFunds(){
+		//fill machine
+		assertEquals(.25, machine.incrementCoinTotal(machine.acceptCoins("quarter")), 0);
+		assertEquals(.50, machine.incrementCoinTotal(machine.acceptCoins("quarter")), 0);
+		assertEquals(.75, machine.incrementCoinTotal(machine.acceptCoins("quarter")), 0);
+		assertEquals(1.00, machine.incrementCoinTotal(machine.acceptCoins("quarter")), 0);
+		assertEquals(1.25, machine.incrementCoinTotal(machine.acceptCoins("quarter")), 0);
+		//transaction
+		assertEquals(0, machine.selectProduct(cola), 0);
+		//sold 1 item
+		assertEquals(4, cola.getQuantity());
+		//changed display
+		assertEquals("Thank You", machine.getDisplay());
+	}
 }

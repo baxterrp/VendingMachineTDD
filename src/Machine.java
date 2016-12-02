@@ -33,5 +33,17 @@ public class Machine {
 		return display;
 	}
 	
+	public double selectProduct(Product product){
+		if(coinTotal > product.getPrice()){
+			product.sellProduct();
+			display = "Thank You";
+			coinTotal = 0;
+			return coinTotal;
+		}
+		else{
+			return coinTotal;
+		}
+	}
+	
 	
 }
